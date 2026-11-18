@@ -37,7 +37,7 @@ const G = {
   time: 0, timeOfDay: 0.42, screen: sceneName ? 'play' : 'title',
   heat: 0, seenT: 99, lastSeen: null, lastCrime: null, bustT: 0, gunfireT: 0,
   mission: null, missionIndex: saved?.missionIndex ?? 0, activity: null,
-  stats: { taxi: saved?.taxiDone ?? 0, courier: saved?.courierDone ?? 0, races: saved?.racesWon ?? 0, vigilante: 0 },
+  stats: { taxi: saved?.taxiDone ?? 0, courier: saved?.courierDone ?? 0, races: saved?.racesWon ?? 0, vigilante: 0, caches: 0 },
   tracers: [], particles: [], policeCars: [], cops: [], roadblocks: [], traffic: [], parked: [], peds: [],
   camera: { x: 0, y: 0 }, shake: 0, message: '', messageT: 0, messageColor: '#fff',
   dialogue: null, objectiveCache: null, districtName: '', hasSave: !!saved,
@@ -127,6 +127,7 @@ function step(dt) {
   if (keyPressed('KeyC')) startActivity(G, 'courier');
   if (keyPressed('KeyR')) startActivity(G, 'race');
   if (keyPressed('KeyV')) startActivity(G, 'vigilante');
+  if (keyPressed('KeyB')) startActivity(G, 'cache');
   if (keyPressed('KeyM')) G.flashMessage(G.audio.toggleMute() ? 'Sound off' : 'Sound on', '#aee2ff');
   // District banner.
   const dName = districtAt(G.player.x, G.player.y).name;
@@ -151,7 +152,7 @@ function startRun(keepSave) {
     G.missionIndex = 0;
     G.player = createPlayer(null);
     G.player.x = PLAYER_START.x; G.player.y = PLAYER_START.y;
-    G.stats = { taxi: 0, courier: 0, races: 0, vigilante: 0 };
+    G.stats = { taxi: 0, courier: 0, races: 0, vigilante: 0, caches: 0 };
     G.hasSave = false;
   }
   G.screen = 'play';

@@ -206,7 +206,7 @@ export function drawScreenOverlay(ctx, G) {
     const lines = [
       'WASD drive / walk · Shift run · F or Enter: enter/exit car · Mouse aim, click: fight / shoot',
       'Q or 1/2: fists / pistol · R reload · E: talk / start mission · P or Esc: pause · M: mute',
-      'Side work: T taxi · C courier · R checkpoint sprint · V vigilante',
+      'Side work: T taxi · C courier · R checkpoint sprint · V vigilante · B cache run',
       G.hasSave ? 'Press ENTER for New Game · C to Continue your save' : 'Press ENTER to start — see Auntie Vera at the diner (gold marker)',
     ];
     lines.forEach((l, i) => ctx.fillText(l, 640, 360 + i * 30));
@@ -217,7 +217,7 @@ export function drawScreenOverlay(ctx, G) {
     ctx.fillStyle = '#fff'; ctx.font = 'bold 44px system-ui, sans-serif'; ctx.fillText('PAUSED', 640, 300);
     ctx.font = '18px system-ui, sans-serif';
     ctx.fillText(`Cash $${Math.floor(G.player.money)} · Respect ${G.player.respect} · Missions ${G.missionIndex}/6`, 640, 348);
-    ctx.fillText(`Taxi fares ${G.stats.taxi} · Courier ${G.stats.courier} · Sprints won ${G.stats.races} · Vigilante ${G.stats.vigilante}`, 640, 378);
+    ctx.fillText(`Taxi fares ${G.stats.taxi} · Courier ${G.stats.courier} · Sprints won ${G.stats.races} · Vigilante ${G.stats.vigilante} · Cache runs ${G.stats.caches}`, 640, 378);
     ctx.fillText('P or Esc to resume · Progress saves automatically', 640, 424);
   } else if (G.screen === 'busted') {
     ctx.fillStyle = 'rgba(20,10,60,0.66)'; ctx.fillRect(0, 0, 1280, 720);
